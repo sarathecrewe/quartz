@@ -1,0 +1,396 @@
+<!doctype html><html lang=en><head><meta charset=utf-8><meta name=description content="ggplot2 Overview The package ggplot2, which forms part of the tidyverse, offers a powerful graphics language for creating elegant and complex plots."><meta property="og:title" content="R Week 2"><meta property="og:description" content="ggplot2 Overview The package ggplot2, which forms part of the tidyverse, offers a powerful graphics language for creating elegant and complex plots."><meta property="og:type" content="website"><meta property="og:image" content="https://sarathecrewe.github.io/quartz/icon.png"><meta property="og:url" content="https://sarathecrewe.github.io/quartz/R-Week-2/"><meta property="og:width" content="200"><meta property="og:height" content="200"><meta name=twitter:card content="summary"><meta name=twitter:title content="R Week 2"><meta name=twitter:description content="ggplot2 Overview The package ggplot2, which forms part of the tidyverse, offers a powerful graphics language for creating elegant and complex plots."><meta name=twitter:image content="https://sarathecrewe.github.io/quartz/icon.png"><title>R Week 2</title><meta name=viewport content="width=device-width,initial-scale=1"><link rel="shortcut icon" type=image/png href=https://sarathecrewe.github.io/quartz//icon.png><link href=https://sarathecrewe.github.io/quartz/styles.19109a40042e9f0e72e952fda4442a34.min.css rel=stylesheet><link href=https://sarathecrewe.github.io/quartz/styles/_light_syntax.86a48a52faebeaaf42158b72922b1c90.min.css rel=stylesheet id=theme-link><script src=https://sarathecrewe.github.io/quartz/js/darkmode.97a9259f642aeca7c654078a245d2f0c.min.js></script>
+<script src=https://sarathecrewe.github.io/quartz/js/util.00639692264b21bc3ee219733d38a8be.min.js></script>
+<link rel=preload href=https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css as=style onload='this.onload=null,this.rel="stylesheet"' integrity=sha384-R4558gYOUz8mP9YWpZJjofhk+zx0AS11p36HnD2ZKj/6JR5z27gSSULCNHIRReVs crossorigin=anonymous><script defer src=https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js integrity=sha384-z1fJDqw8ZApjGO3/unPWUPsIymfsJmyrDVWC8Tv/a1HeOtGmkwNd/7xUS0Xcnvsx crossorigin=anonymous></script>
+<script defer src=https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js integrity=sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR crossorigin=anonymous></script>
+<script defer src=https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/contrib/copy-tex.min.js integrity=sha384-ww/583aHhxWkz5DEVn6OKtNiIaLi2iBRNZXfJRiY1Ai7tnJ9UXpEsyvOITVpTl4A crossorigin=anonymous></script>
+<script src=https://cdn.jsdelivr.net/npm/@floating-ui/core@1.2.1></script>
+<script src=https://cdn.jsdelivr.net/npm/@floating-ui/dom@1.2.1></script>
+<script defer src=https://sarathecrewe.github.io/quartz/js/popover.aa9bc99c7c38d3ae9538f218f1416adb.min.js></script>
+<script defer src=https://sarathecrewe.github.io/quartz/js/code-title.ce4a43f09239a9efb48fee342e8ef2df.min.js></script>
+<script defer src=https://sarathecrewe.github.io/quartz/js/clipboard.2913da76d3cb21c5deaa4bae7da38c9f.min.js></script>
+<script defer src=https://sarathecrewe.github.io/quartz/js/callouts.7723cac461d613d118ee8bb8216b9838.min.js></script>
+<script>const SEARCH_ENABLED=!1,LATEX_ENABLED=!0,PRODUCTION=!0,BASE_URL="https://sarathecrewe.github.io/quartz/",fetchData=Promise.all([fetch("https://sarathecrewe.github.io/quartz/indices/linkIndex.62c7c913993ba624266631a5824c3355.min.json").then(e=>e.json()).then(e=>({index:e.index,links:e.links})),fetch("https://sarathecrewe.github.io/quartz/indices/contentIndex.7625e87d214cc0ebcf2d5dd5525eea7c.min.json").then(e=>e.json())]).then(([{index:e,links:t},n])=>({index:e,links:t,content:n})),render=()=>{const e=new URL(BASE_URL),t=e.pathname,n=window.location.pathname,s=t==n;addCopyButtons(),addTitleToCodeBlocks(),addCollapsibleCallouts(),initPopover("https://sarathecrewe.github.io/quartz",!0);const o=document.getElementById("footer");if(o){const e=document.getElementById("graph-container");if(!e)return requestAnimationFrame(render);e.textContent="";const t=s&&!1;drawGraph("https://sarathecrewe.github.io/quartz",t,[{"/moc":"#4388cc"}],t?{centerForce:1,depth:-1,enableDrag:!0,enableLegend:!1,enableZoom:!0,fontSize:.5,linkDistance:1,opacityScale:3,repelForce:1,scale:1.4}:{centerForce:1,depth:1,enableDrag:!0,enableLegend:!1,enableZoom:!0,fontSize:.6,linkDistance:1,opacityScale:3,repelForce:2,scale:1.2})}var i=document.getElementsByClassName("mermaid");i.length>0&&import("https://unpkg.com/mermaid@9/dist/mermaid.esm.min.mjs").then(e=>{e.default.init()});function a(n){const e=n.target,t=e.className.split(" "),s=t.includes("broken"),o=t.includes("internal-link");plausible("Link Click",{props:{href:e.href,broken:s,internal:o,graph:!1}})}const r=document.querySelectorAll("a");for(link of r)link.className.includes("root-title")&&link.addEventListener("click",a,{once:!0})},init=(e=document)=>{addCopyButtons(),addTitleToCodeBlocks(),renderMathInElement(e.body,{delimiters:[{left:"$$",right:"$$",display:!0},{left:"$",right:"$",display:!1}],macros:{'’':"'"},throwOnError:!1})}</script><script type=module>
+    import { attachSPARouting } from "https:\/\/sarathecrewe.github.io\/quartz\/js\/router.d6fe6bd821db9ea97f9aeefae814d8e7.min.js"
+    attachSPARouting(init, render)
+  </script><script defer data-domain=sarathecrewe.github.io/quartz src=https://plausible.io/js/script.js></script>
+<script>window.plausible=window.plausible||function(){(window.plausible.q=window.plausible.q||[]).push(arguments)}</script></head><body><div id=search-container><div id=search-space><input autocomplete=off id=search-bar name=search type=text aria-label=Search placeholder="Search for something..."><div id=results-container></div></div></div><script src=https://cdn.jsdelivr.net/npm/flexsearch@0.7.21/dist/flexsearch.bundle.js integrity="sha256-i3A0NZGkhsKjVMzFxv3ksk0DZh3aXqu0l49Bbh0MdjE=" crossorigin=anonymous defer></script>
+<script defer src=https://sarathecrewe.github.io/quartz/js/full-text-search.e6e2e0c213187ca0c703d6e2c7a77fcd.min.js></script><div class=singlePage><header><h1 id=page-title><a class=root-title href=https://sarathecrewe.github.io/quartz/>🪴 Quartz 3.3</a></h1><div class=spacer></div><div id=search-icon><p>Search</p><svg tabindex="0" aria-labelledby="title desc" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title id="title">Search Icon</title><desc id="desc">Icon to open search</desc><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"/><circle cx="8" cy="8" r="7"/></g></svg></div><div class=darkmode><input class=toggle id=darkmode-toggle type=checkbox tabindex=-1>
+<label id=toggle-label-light for=darkmode-toggle tabindex=-1><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="dayIcon" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35"><title>Light Mode</title><path d="M6 17.5C6 16.672 5.328 16 4.5 16h-3C.672 16 0 16.672.0 17.5S.672 19 1.5 19h3C5.328 19 6 18.328 6 17.5zM7.5 26c-.414.0-.789.168-1.061.439l-2 2C4.168 28.711 4 29.086 4 29.5 4 30.328 4.671 31 5.5 31c.414.0.789-.168 1.06-.44l2-2C8.832 28.289 9 27.914 9 27.5 9 26.672 8.329 26 7.5 26zm10-20C18.329 6 19 5.328 19 4.5v-3C19 .672 18.329.0 17.5.0S16 .672 16 1.5v3C16 5.328 16.671 6 17.5 6zm10 3c.414.0.789-.168 1.06-.439l2-2C30.832 6.289 31 5.914 31 5.5 31 4.672 30.329 4 29.5 4c-.414.0-.789.168-1.061.44l-2 2C26.168 6.711 26 7.086 26 7.5 26 8.328 26.671 9 27.5 9zM6.439 8.561C6.711 8.832 7.086 9 7.5 9 8.328 9 9 8.328 9 7.5c0-.414-.168-.789-.439-1.061l-2-2C6.289 4.168 5.914 4 5.5 4 4.672 4 4 4.672 4 5.5c0 .414.168.789.439 1.06l2 2.001zM33.5 16h-3c-.828.0-1.5.672-1.5 1.5s.672 1.5 1.5 1.5h3c.828.0 1.5-.672 1.5-1.5S34.328 16 33.5 16zM28.561 26.439C28.289 26.168 27.914 26 27.5 26c-.828.0-1.5.672-1.5 1.5.0.414.168.789.439 1.06l2 2C28.711 30.832 29.086 31 29.5 31c.828.0 1.5-.672 1.5-1.5.0-.414-.168-.789-.439-1.061l-2-2zM17.5 29c-.829.0-1.5.672-1.5 1.5v3c0 .828.671 1.5 1.5 1.5s1.5-.672 1.5-1.5v-3C19 29.672 18.329 29 17.5 29zm0-22C11.71 7 7 11.71 7 17.5S11.71 28 17.5 28 28 23.29 28 17.5 23.29 7 17.5 7zm0 18c-4.136.0-7.5-3.364-7.5-7.5s3.364-7.5 7.5-7.5 7.5 3.364 7.5 7.5S21.636 25 17.5 25z"/></svg></label><label id=toggle-label-dark for=darkmode-toggle tabindex=-1><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="nightIcon" viewBox="0 0 100 100" style="enable-background='new 0 0 100 100'"><title>Dark Mode</title><path d="M96.76 66.458c-.853-.852-2.15-1.064-3.23-.534-6.063 2.991-12.858 4.571-19.655 4.571C62.022 70.495 50.88 65.88 42.5 57.5 29.043 44.043 25.658 23.536 34.076 6.47c.532-1.08.318-2.379-.534-3.23-.851-.852-2.15-1.064-3.23-.534-4.918 2.427-9.375 5.619-13.246 9.491-9.447 9.447-14.65 22.008-14.65 35.369.0 13.36 5.203 25.921 14.65 35.368s22.008 14.65 35.368 14.65c13.361.0 25.921-5.203 35.369-14.65 3.872-3.871 7.064-8.328 9.491-13.246C97.826 68.608 97.611 67.309 96.76 66.458z"/></svg></label></div></header><article><h1>R Week 2</h1><p class=meta>Last updated
+Aug 16, 2023
+<a href=https://github.com/jackyzha0/quartz/tree/hugo/content/R%20Week%202.md rel=noopener>Edit Source</a></p><ul class=tags></ul><aside class=mainTOC><details><summary>Table of Contents</summary><nav id=TableOfContents><ol><li><a href=#ggplot2>ggplot2</a><ol><li><a href=#overview>Overview</a></li></ol></li><li><a href=#primary-components-of-a-plot>Primary components of a plot</a><ol><li><a href=#layers-and-aesthetics>Layers and aesthetics</a></li><li><a href=#aesthetics-setting-versus-mapping>Aesthetics: Setting versus mapping</a></li></ol></li><li><a href=#creating-a-basic-plot>Creating a basic plot</a><ol><li><a href=#loading-data>Loading data</a></li><li><a href=#painting>Painting</a></li></ol></li><li><a href=#adding-flavour>Adding flavour</a><ol><li><a href=#colour>Colour</a></li><li><a href=#scales>Scales</a></li><li><a href=#labels>Labels</a></li><li><a href=#themes>Themes</a></li><li><a href=#saving-plots-as-objects>Saving plots as objects</a></li></ol></li><li><a href=#advance-plots>Advance plots</a><ol><li><a href=#grammer-of-graphics>Grammer of graphics</a></li><li><a href=#grouping-data-points>Grouping data points</a></li><li><a href=#facets>Facets</a></li><li><a href=#modifying-position>Modifying position</a></li></ol></li><li><a href=#statistical-transformations>Statistical transformations</a></li></ol></nav></details></aside><a href=#ggplot2><h2 id=ggplot2><span class=hanchor arialabel=Anchor># </span>ggplot2</h2></a><a href=#overview><h3 id=overview><span class=hanchor arialabel=Anchor># </span>Overview</h3></a><p>The <strong>package</strong> <code>ggplot2</code>, which forms part of the <code>tidyverse</code>, offers a powerful graphics language for creating elegant and complex plots. In this lesson we will cover how various types of plots can be created using the <code>ggplot2</code> <strong>package</strong></p><p>Since the <code>ggplot2</code> <strong>package</strong> forms part of the <code>tidyverse</code>, you do not have to <strong>install</strong> the <strong>package</strong> if you have <strong>installed</strong> the <code>tidyverse</code> <strong>package</strong> previously. However, if you would like to <strong>install</strong> the <strong>package</strong>, the <strong>function</strong> <code>install.packages()</code> can be used</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>install.packages(&#34;ggplot2&#34;)
+</span></span></code></pre></td></tr></table></div></div><p>Once the <strong>package</strong> is installed, the <strong>package</strong> can be <strong>loaded</strong> using the <strong>function</strong> <code>library()</code></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>library(ggplot2) 
+</span></span></code></pre></td></tr></table></div></div><hr><p>The design of <code>ggplot2</code> is based on the idea that any complex plot can be divided into <strong>layers</strong>. For example, a scatterplot and smoothed regression line can be combined to summarise the relationship between two continuous features</p><p><a class="internal-link broken">Combine.png</a></p><hr><a href=#primary-components-of-a-plot><h2 id=primary-components-of-a-plot><span class=hanchor arialabel=Anchor># </span>Primary components of a plot</h2></a><a href=#layers-and-aesthetics><h3 id=layers-and-aesthetics><span class=hanchor arialabel=Anchor># </span>Layers and aesthetics</h3></a><p><code>ggplot2</code> graphic <strong>objects</strong> consist of two primary components <strong>layers</strong> and <strong>aesthetics</strong>:</p><ol><li><p><strong>Layers</strong> are the components of a graph</p><ul><li>For example, the <strong>layer</strong> <code>geom_point()</code> adds a <strong>layer</strong> of scatterplot points</li><li>Additional <strong>layers</strong> can be added to a ggplot2 graphic <strong>object</strong> by using the <code>+</code> <strong>operator</strong> is e.g. <code>ggplot() + geom_point()</code></li></ul></li><li><p><strong>Aesthetics</strong> determine how <strong>layers</strong> appear e.g. we can use <strong>aesthetics</strong> to specify the colour of the points in a <code>geom_point()</code> __layer __</p><ul><li>Aesthetics are set using <strong>arguments</strong> inside a <strong>layer function</strong> e.g. <code>geom_point(color = “red”)</code></li><li><strong>Aesthetics</strong> includes location, colours and sizes</li></ul></li></ol><hr><a href=#aesthetics-setting-versus-mapping><h3 id=aesthetics-setting-versus-mapping><span class=hanchor arialabel=Anchor># </span>Aesthetics: Setting versus mapping</h3></a><p>Each layer has several <strong>arguments</strong> that can be used to control the <strong>appearance</strong> of a <strong>layer</strong>. When deciding how a <strong>layer</strong> should appear, we first have to decide if the <strong>appearance</strong> should be based on a <strong>variable</strong> or not. An <strong>aesthetic</strong> i.e. colour can be:</p><ol><li><strong>set</strong> to a constant value</li></ol><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>ggplot(mtcars, 
+</span></span><span class=line><span class=cl>       aes(x = disp, y = mpg)) +
+</span></span><span class=line><span class=cl>  geom_point(colour = &#34;purple&#34;) + 
+</span></span><span class=line><span class=cl>  labs(x = &#34;Displacement&#34;, 
+</span></span><span class=line><span class=cl>       y = &#34;Milles/gallon&#34;,
+</span></span><span class=line><span class=cl>       title = &#34;Setting aesthetic&#34;)
+</span></span></code></pre></td></tr></table></div></div><ol start=2><li>or <strong>mapped</strong> to a variable i.e. transmission</li></ol><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>ggplot(mtcars, aes(x = disp, y = mpg, colour = as.factor(am))) +
+</span></span><span class=line><span class=cl>  geom_point() +
+</span></span><span class=line><span class=cl>  labs(x = &#34;Displacement&#34;, 
+</span></span><span class=line><span class=cl>       y = &#34;Milles/gallon&#34;,
+</span></span><span class=line><span class=cl>       title = &#34;Mapping aesthetic&#34;,
+</span></span><span class=line><span class=cl>       colour = &#34;Transmission&#34;) +
+</span></span><span class=line><span class=cl>  scale_color_brewer(palette = &#34;Dark2&#34;)
+</span></span></code></pre></td></tr></table></div></div><ol><li><p><strong>Setting aesthetics</strong>: <strong>Arguments</strong> like colour, size, line type, shape, fill and alpha can be passed directly to a <strong>layer</strong>. These <strong>aesthetics</strong> are not influenced by data. For example, we can specify that all points in a scatterplot should be purple</p></li><li><p><strong>Mapping aesthetics</strong>: <strong>Mapping aesthetics</strong> depend on data. For example, if we want the points in a scatterplot to have a different colour based on the values of a variable a <strong>mapping aesthetic</strong> is required. Mapping aesthetics are specified inside the <code>aes()</code> <strong>argument</strong></p></li></ol><p><a class="internal-link broken">Aesthetic example.png</a></p><a href=#creating-a-basic-plot><h2 id=creating-a-basic-plot><span class=hanchor arialabel=Anchor># </span>Creating a basic plot</h2></a><a href=#loading-data><h3 id=loading-data><span class=hanchor arialabel=Anchor># </span>Loading data</h3></a><p>To illustrate how we can create visualisations using <code>ggplot2</code> we will be using data from the Gapminder project. We will be specifically focusing on the life expectancy of different countries.</p><p>The Gapminder data can be accessed by <strong>installing</strong> the <strong>package</strong> <code>gapminder</code></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>install.packages(&#34;gapminder&#34;)
+</span></span></code></pre></td></tr></table></div></div><p>After <strong>installing</strong> the <code>gapminder</code> <strong>package</strong>, <strong>load</strong> the <strong>package</strong> using the <strong>function</strong> <code>library()</code></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>library(gapminder) 
+</span></span></code></pre></td></tr></table></div></div><p>Once the <strong>package</strong> is <strong>loaded</strong> the data set will be stored in the <strong>object</strong> <code>gapminder</code>. The <strong>function</strong> <code>str()</code> can be used to view the structure of the <code>data</code> <strong>object</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>str(gapminder) 
+</span></span></code></pre></td></tr></table></div></div><p>The <code>gapminder</code> object is a <strong>tibble</strong>; a special kind of <strong>data frame</strong> with 1704 rows and 6 columns.</p><hr><a href=#painting><h3 id=painting><span class=hanchor arialabel=Anchor># </span>Painting</h3></a><p>The first step in creating a <code>ggplot2</code> graphics <strong>object</strong> is to define a <code>ggplot</code> <strong>object</strong> using the <strong>function</strong> <code>ggplot()</code>. The <strong>function</strong> <code>ggplot()</code> simply creates a blank canvas. This blank canvas can be used to add graphical elements to. Run the code below to view the blank canvas</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>ggplot()
+</span></span></code></pre></td></tr></table></div></div><p><strong>Adding a layer</strong></p><p>We can add layers to our blank canvas using the <code>+</code> operator. For instance we can add a <code>geom_point</code> <strong>layer</strong> to our initial blank slate created with the <strong>function</strong> <code>ggplot()</code>.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>ggplot() + 
+</span></span><span class=line><span class=cl>  geom_point()
+</span></span></code></pre></td></tr></table></div></div><p>Since we have not specified the data that we want to plot or how we want our data to be plotted, our canvas will remain blank.</p><p><strong>Adding data</strong></p><p>To specify what data to use in our plot, the <strong>argument</strong> <code>data</code> should be set. Passing a data set to the <strong>argument</strong> <code>data</code> is however not enough, we need to inform <code>ggplot2</code> how we want our data to <strong>map</strong> to the plot.</p><p>Inside the <strong>function</strong> <code>aes()</code>, we specify the values that should be used for the x and y axis.</p><p>Try plotting the life expectancy i.e. <code>lifeExp</code> of South Africa over time i.e. <code>year</code> modifying the code below:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>ggplot() + 
+</span></span><span class=line><span class=cl>  geom_point(data = gapminder[gapminder$country == &#34;South Africa&#34;,1:6], 
+</span></span><span class=line><span class=cl>             aes(x = ___, y = ___))
+</span></span></code></pre></td></tr></table></div></div><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>ggplot() + 
+</span></span><span class=line><span class=cl>  geom_point(data = gapminder[gapminder$country == &#34;South Africa&#34;,1:6], 
+</span></span><span class=line><span class=cl>             aes(x = year, y = lifeExp)) 
+</span></span></code></pre></td></tr></table></div></div><p>The <strong>layer</strong> <code>geom_point</code>, mapped each data instance to a point on the graph.</p><p><strong>Adding a layer</strong></p><p>If we wanted to add a line graph to our existing <code>ggplot2</code> graphics <strong>object</strong>, we can simply add a new <strong>layer</strong>. In this case we use the <code>geom_line</code> <strong>layer</strong>, a <strong>layer</strong> that connect data points with a line. Add the layer <code>geom_line</code> in the code below</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>ggplot() + 
+</span></span><span class=line><span class=cl>  geom_point(data = gapminder[gapminder$country == &#34;South Africa&#34;,1:6], 
+</span></span><span class=line><span class=cl>             aes(x = year, y = lifeExp)) +
+</span></span><span class=line><span class=cl>  ___(data = gapminder[gapminder$country == &#34;South Africa&#34;,1:6], 
+</span></span><span class=line><span class=cl>             aes(x = year, y = lifeExp))
+</span></span></code></pre></td></tr></table></div></div><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>ggplot() + 
+</span></span><span class=line><span class=cl>  geom_point(data = gapminder[gapminder$country == &#34;South Africa&#34;,1:6], 
+</span></span><span class=line><span class=cl>             aes(x = year, y = lifeExp)) +
+</span></span><span class=line><span class=cl>  geom_line(data = gapminder[gapminder$country == &#34;South Africa&#34;,1:6], 
+</span></span><span class=line><span class=cl>             aes(x = year, y = lifeExp))
+</span></span></code></pre></td></tr></table></div></div><p>New <strong>layers</strong> will always be drawn over previous <strong>layers</strong>.</p><p><strong>Avoid work; inherit</strong></p><p>It seems rather tedious to specify the <strong>data</strong> and the <strong>aesthetics</strong> for each <strong>layer</strong>.</p><p>To avoid repetitive code, any <strong>mapping aesthetic arguments</strong> specified in the <code>ggplot</code> <strong>layer</strong>, will be inherited by subsequent <strong>layers</strong>. The code below produces the same plot as the code in the previous block; with less typing</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>ggplot(data = gapminder[gapminder$country == &#34;South Africa&#34;,1:6], 
+</span></span><span class=line><span class=cl>       aes(x = year, y = lifeExp)) + 
+</span></span><span class=line><span class=cl>  geom_point() + 
+</span></span><span class=line><span class=cl>  geom_line() 
+</span></span></code></pre></td></tr></table></div></div><p>This does not imply that we cannot overwrite the <strong>arguments</strong> in subsequent <strong>layers</strong>.</p><a href=#adding-flavour><h2 id=adding-flavour><span class=hanchor arialabel=Anchor># </span>Adding flavour</h2></a><a href=#colour><h3 id=colour><span class=hanchor arialabel=Anchor># </span>Colour</h3></a><p>If we want to change the colour of the line graph we can simply <strong>set</strong> the colour <strong>aesthetic</strong> equal to the value “blue”.</p><p>Try changing the colour of the line to blue; without changing the colour of the points</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>ggplot(data = gapminder[gapminder$country == &#34;South Africa&#34;,1:6], 
+</span></span><span class=line><span class=cl>       aes(x = year, y = lifeExp)) + 
+</span></span><span class=line><span class=cl>  geom_point() + 
+</span></span><span class=line><span class=cl>  geom_line(___) 
+</span></span></code></pre></td></tr></table></div></div><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>ggplot(data = gapminder[gapminder$country == &#34;South Africa&#34;,1:6], 
+</span></span><span class=line><span class=cl>       aes(x = year, y = lifeExp)) + 
+</span></span><span class=line><span class=cl>  geom_point() + 
+</span></span><span class=line><span class=cl>  geom_line(colour = &#34;blue&#34;) 
+</span></span></code></pre></td></tr></table></div></div><p>What happens if we use a <strong>mapping aesthetic</strong> as oppose to a <strong>setting aesthetic</strong> to set the colour of the line graph?</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>ggplot(data = gapminder[gapminder$country == &#34;South Africa&#34;,1:6], 
+</span></span><span class=line><span class=cl>       aes(x = year, y = lifeExp)) + 
+</span></span><span class=line><span class=cl>  geom_point() + 
+</span></span><span class=line><span class=cl>  geom_line(aes(colour = &#34;blue&#34;))
+</span></span></code></pre></td></tr></table></div></div><p>When we set the colour using a <strong>mapping aesthetic</strong>, our line plot uses the colour red even though we specified blue. Using <code>aes(colour = “blue”)</code> maps the vector <code>c(“blue”)</code> to the colour element of the line plot.</p><p><strong>Mapping aesthetics</strong> is used when we want to change how a <strong>layer</strong> is displayed based on the underlying data. For instance, we can map the <code>year</code> <strong>column</strong> of the data set to the colour <strong>mapping aesthetic</strong> of the <code>geom_line</code> <strong>layer</strong>. In this case, <code>ggplot2</code> will assign colours based on the values in the <code>year</code> <strong>column</strong>. <code>ggplot2</code> will automatically assign a unique level of the <strong>aesthetic</strong> to each value, a process known as <strong>scaling</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>ggplot(data = gapminder[gapminder$country == &#34;South Africa&#34;,1:6], 
+</span></span><span class=line><span class=cl>       aes(x = year, y = lifeExp)) + 
+</span></span><span class=line><span class=cl>  geom_point() + 
+</span></span><span class=line><span class=cl>  geom_line(aes(colour = year))
+</span></span></code></pre></td></tr></table></div></div><a href=#scales><h3 id=scales><span class=hanchor arialabel=Anchor># </span>Scales</h3></a><p>In the previous graph, the colours used for the <strong>variable</strong> <code>year</code> were automatically selected. If we want to change how the <strong>variable</strong> <code>year</code> map to a set of colours we need to add a <strong>scale layer</strong> to a ggplot2 graphics <strong>object</strong></p><p>A <strong>scale layer</strong> use the following syntax: <code>scale_[aesthetic]_[option]</code> where:</p><ul><li><code>[aesthetic]</code> should be replaced the name of the <strong>mapping aesthetic</strong> you would like to change e.g. colour, shape, linetype, alpha, size, fill, x, y ,</li><li><code>[option]</code> should be used to specify how you would like to change the <strong>aesthetic</strong>. For example, <code>manual</code>, <code>continuous</code> or <code>discrete</code> (depending on the nature of the variable)</li></ul><p>Examples</p><ul><li><code>scale_linetype_manual()</code>: Manually specify the linetype of each different value</li><li><code>scale_alpha_continuous()</code>: Varies transparency over a continuous range</li></ul><p>To change the default colours use to <strong>map</strong> the <strong>variable</strong> <code>year</code> to colour, the <strong>scale layer</strong> <code>scale_color_continuous</code> can be added</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>ggplot(data = gapminder[gapminder$country == &#34;South Africa&#34;,1:6], 
+</span></span><span class=line><span class=cl>       aes(x = year, y = lifeExp)) + 
+</span></span><span class=line><span class=cl>  geom_point() + 
+</span></span><span class=line><span class=cl>  geom_line(aes(colour = year)) +
+</span></span><span class=line><span class=cl>  scale_color_continuous(type = &#34;gradient&#34;,
+</span></span><span class=line><span class=cl>                         low = &#34;red&#34;, 
+</span></span><span class=line><span class=cl>                         high = &#34;blue&#34;)
+</span></span></code></pre></td></tr></table></div></div><p>When we try to add a <strong>scale</strong> that is not compatible with the <strong>map variable</strong>, the code will return an error</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>ggplot(data = gapminder[gapminder$country == &#34;South Africa&#34;,1:6], 
+</span></span><span class=line><span class=cl>       aes(x = year, y = lifeExp)) + 
+</span></span><span class=line><span class=cl>  geom_point() + 
+</span></span><span class=line><span class=cl>  geom_line(aes(colour = year)) +
+</span></span><span class=line><span class=cl>  scale_color_discrete()
+</span></span></code></pre></td></tr></table></div></div><p>In the above example, <code>ggplot2</code> returns an error since we are trying to <strong>map</strong> a <strong>continuous variable</strong> to a <strong>discrete</strong> <strong>set</strong> of colour.</p><p>When we map a discrete <strong>variable</strong> to the <strong>aesthetic</strong> colour e.g. <code>country</code>, we can <strong>map</strong> the <strong>variable</strong> to a discrete set of colours by adding the layer <code>scale_color_discrete</code></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>ggplot(data = gapminder[gapminder$country == &#34;South Africa&#34;,1:6], 
+</span></span><span class=line><span class=cl>       aes(x = year, y = lifeExp)) + 
+</span></span><span class=line><span class=cl>  geom_point() + 
+</span></span><span class=line><span class=cl>  geom_line(aes(colour = country)) +
+</span></span><span class=line><span class=cl>  scale_color_discrete(type = c(&#34;blue&#34;))
+</span></span></code></pre></td></tr></table></div></div><p>Since x is a <strong>mapping aesthetic</strong>, it also has a <strong>scale</strong>. For example, we can add the <strong>scale layer</strong> ``scale_x_continuous` to set the major tick marks or breaks to align with the years that we collected data for</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>ggplot(data = gapminder[gapminder$country == &#34;South Africa&#34;,1:6], 
+</span></span><span class=line><span class=cl>       aes(x = year, y = lifeExp)) + 
+</span></span><span class=line><span class=cl>  geom_point() + 
+</span></span><span class=line><span class=cl>  geom_line() +
+</span></span><span class=line><span class=cl>  scale_x_continuous(breaks = seq(1952, 2007, by = 5))
+</span></span></code></pre></td></tr></table></div></div><p><strong>Scales</strong> can also be used to limit the data displayed. In the example, any <strong>rows</strong> with years before 1995 is removed</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>ggplot(data = gapminder[gapminder$country == &#34;South Africa&#34;,1:6], 
+</span></span><span class=line><span class=cl>       aes(x = year, y = lifeExp)) + 
+</span></span><span class=line><span class=cl>  geom_point() + 
+</span></span><span class=line><span class=cl>  geom_line() +
+</span></span><span class=line><span class=cl>  scale_x_continuous(limit = c(1995, NA))
+</span></span></code></pre></td></tr></table></div></div><a href=#labels><h3 id=labels><span class=hanchor arialabel=Anchor># </span>Labels</h3></a><p>A x-label will be automatically created using the <strong>name</strong> of the <strong>variable mapped</strong> to the x <strong>aesthetic</strong>. To add a manual label, the <strong>layer</strong> <code>xlab</code> can be added. The <code>xlab</code> <strong>layer</strong> can also be used to remove the label e.g. <code>xlab(NULL)</code></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>ggplot(data = gapminder[gapminder$country == &#34;South Africa&#34;,1:6], 
+</span></span><span class=line><span class=cl>       aes(x = year, y = lifeExp)) + 
+</span></span><span class=line><span class=cl>  geom_point() + 
+</span></span><span class=line><span class=cl>  geom_line() +
+</span></span><span class=line><span class=cl>  xlab(&#34;Year&#34;) 
+</span></span></code></pre></td></tr></table></div></div><p>To add a custom y-label and title to a plot add the <strong>layers</strong> <code>ylab</code> and <code>ggtitle</code> respectively</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>ggplot(data = gapminder[gapminder$country == &#34;South Africa&#34;,1:6], 
+</span></span><span class=line><span class=cl>       aes(x = year, y = lifeExp)) + 
+</span></span><span class=line><span class=cl>  geom_point() + 
+</span></span><span class=line><span class=cl>  geom_line() +
+</span></span><span class=line><span class=cl>  xlab(&#34;Year&#34;) + 
+</span></span><span class=line><span class=cl>  ylab(&#34;Life expectancy&#34;) +
+</span></span><span class=line><span class=cl>  ggtitle(&#34;Life expectancy in SA&#34;)
+</span></span></code></pre></td></tr></table></div></div><p>The <code>ggtitle</code>, <code>xlab</code> and <code>ylab</code> are <strong>helper layers</strong>; shortcuts to quickly change a ggplot2 graphics <strong>object</strong>. In general, any labels including labels of legends can be set using the <code>labs</code> __layer __</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>ggplot(data = gapminder[gapminder$country == &#34;South Africa&#34;,1:6], 
+</span></span><span class=line><span class=cl>       aes(x = year, y = lifeExp)) + 
+</span></span><span class=line><span class=cl>  geom_point() + 
+</span></span><span class=line><span class=cl>  geom_line() +
+</span></span><span class=line><span class=cl>  labs(title = &#34;Life expectancy in SA&#34;, 
+</span></span><span class=line><span class=cl>       x = &#34;Year&#34;, 
+</span></span><span class=line><span class=cl>       y = &#34;Life expectancy&#34;)
+</span></span></code></pre></td></tr></table></div></div><a href=#themes><h3 id=themes><span class=hanchor arialabel=Anchor># </span>Themes</h3></a><p>The <code>theme</code> <strong>layer</strong> allows you to exercise fine control over non-data elements of a plot. The <code>ggplot2</code> <strong>package</strong> includes several build-in themes e.g. <code>theme_grey()</code>, <code>theme_bw()</code>, <code>theme_linedraw()</code>, <code>theme_light()</code>, <code>theme_dark()</code>, <code>theme_minimal()</code> or <code>theme_classic()</code></p><p><a class="internal-link broken">Theme.png</a></p><p>Adding a built-in theme is straightforward, simply add the theme as a <strong>layer</strong>. If you want all your plots to use the same theme use the <strong>function</strong> <code>theme_set()</code> at the start of an R Script e.g. <code>theme_set(theme_classic())</code></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>ggplot(data = gapminder[gapminder$country == &#34;South Africa&#34;,1:6], 
+</span></span><span class=line><span class=cl>       aes(x = year, y = lifeExp)) + 
+</span></span><span class=line><span class=cl>  geom_point() + 
+</span></span><span class=line><span class=cl>  geom_line() +
+</span></span><span class=line><span class=cl>  labs(title = &#34;Life expectancy in SA&#34;, 
+</span></span><span class=line><span class=cl>       x = &#34;Year&#34;, 
+</span></span><span class=line><span class=cl>       y = &#34;Life expectancy&#34;) +
+</span></span><span class=line><span class=cl>  theme_bw()
+</span></span></code></pre></td></tr></table></div></div><p>We can also create our own theme using the <code>theme</code> <strong>layer</strong>:</p><ul><li>The theme <strong>layer</strong> has several <strong>arguments</strong> (also called elements) that specify the non-data elements that can be controlled. For example, the <code>plot.title</code> element controls the appearance of the plot titles</li><li>Each element is associated with an element function, which describes the visual properties of the element. For example, <code>element_text()</code> sets the font size</li><li>There are over 30 different elements, which can be viewed by opening the help file of the <strong>function</strong> <code>theme</code> e.g. <code>?theme</code></li><li>If you are interested in how the different elements work refer to the book: &lsquo;ggplot2: Elegant Graphics for Data Analysis by Wickham H&rsquo;</li></ul><p>You can also add a built-in theme <strong>layer</strong> followed by the theme <strong>layer</strong> to override some of the built-in theme settings. I usually add the theme <strong>layer</strong> last to ensure none of the other layer overrides any of the theme settings</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>ggplot(data = gapminder[gapminder$country == &#34;South Africa&#34;,1:6], 
+</span></span><span class=line><span class=cl>       aes(x = year, y = lifeExp)) + 
+</span></span><span class=line><span class=cl>  geom_point() + 
+</span></span><span class=line><span class=cl>  geom_line() +
+</span></span><span class=line><span class=cl>  labs(title = &#34;Life expectancy in SA&#34;, 
+</span></span><span class=line><span class=cl>       x = &#34;Year&#34;, 
+</span></span><span class=line><span class=cl>       y = &#34;Life expectancy&#34;) +
+</span></span><span class=line><span class=cl>  theme(plot.title = element_text(size = 8))
+</span></span></code></pre></td></tr></table></div></div><a href=#saving-plots-as-objects><h3 id=saving-plots-as-objects><span class=hanchor arialabel=Anchor># </span>Saving plots as objects</h3></a><p>Since a <code>ggplot2</code> plot is an <strong>object</strong> we can assign a <strong>name</strong> to the <code>ggplot</code> <strong>object</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>my_plot &lt;- ggplot(data = gapminder[gapminder$country == &#34;South Africa&#34;,1:6],
+</span></span><span class=line><span class=cl>                  aes(x = year, y = lifeExp)) + 
+</span></span><span class=line><span class=cl>  geom_point() 
+</span></span></code></pre></td></tr></table></div></div><p>When you assign a <strong>name</strong> to a <code>ggplot</code> <strong>object</strong>, the plot will not automatically show in the <code>Plots</code> tab of <code>R Studio</code> or as an output. To show the graph simply add a single line of code with the <strong>name</strong> of the <strong>object</strong>, e.g. the same as printing an object. Assigning a <strong>name</strong> to a <code>ggplot</code> <strong>object</strong> means that we can easily use it later. If I want some of my plots to look the same I usually store a custom theme in an object and add it as a layer to a <code>ggplot2</code> graphics <strong>object</strong>.</p><p>Once a <strong>name</strong> is assigned to a <code>ggplot</code> <strong>object</strong>, we can easily use the <strong>object</strong>. For example, a <strong>name</strong> can be assigned to a <code>ggplot</code> <strong>object</strong> that stores a custom theme. The <strong>name</strong> of the <code>object</code> can then simply be added to any <code>ggplot2</code> <strong>object</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>my_theme &lt;- theme(axis.text = element_text(size = 10)) # Custom theme 
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>ggplot(data = gapminder[gapminder$country == &#34;South Africa&#34;,1:6],
+</span></span><span class=line><span class=cl>                  aes(x = year, y = lifeExp)) + 
+</span></span><span class=line><span class=cl>  geom_point() +
+</span></span><span class=line><span class=cl>  my_theme
+</span></span></code></pre></td></tr></table></div></div><a href=#advance-plots><h2 id=advance-plots><span class=hanchor arialabel=Anchor># </span>Advance plots</h2></a><a href=#grammer-of-graphics><h3 id=grammer-of-graphics><span class=hanchor arialabel=Anchor># </span>Grammer of graphics</h3></a><p>The layer grammar of graphics consists of eight components namely: Data, Mapping, Statistics, Scales, Geometries, Facets, Coordinates and Themes. We have discussed some of these components before. In this lesson we will introduce some new <strong>layers</strong> and discuss some fundamental assumptions made by <code>ggplot2</code></p><p><a class="internal-link broken">350</a></p><a href=#grouping-data-points><h3 id=grouping-data-points><span class=hanchor arialabel=Anchor># </span>Grouping data points</h3></a><p>Points are connected in a specific order. When creating a line plot, <code>ggplot2</code> has to decide how each data point or <strong>instance</strong> should be connected. By default, data points or <strong>instances</strong> will all be connected based on a heuristic.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>ggplot(data.frame(x = c(1,1,2,2,3,3), y = c(1,2,2,1,1,2)), 
+</span></span><span class=line><span class=cl>       aes(x = x, y = y)) + 
+</span></span><span class=line><span class=cl>  geom_line()
+</span></span></code></pre></td></tr></table></div></div><p>When we try to create a line plot of the life expectancy over time for all countries in the <code>gapminder</code> data set, <code>ggplot2</code> connects all the <strong>instances</strong>. From the output, the life expectancy per country is not clear. We require a way to tell <code>ggplot2</code> that only specific data points should be connected</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>ggplot(data = gapminder, 
+</span></span><span class=line><span class=cl>       aes(x = year, y = lifeExp)) + 
+</span></span><span class=line><span class=cl>  geom_line()
+</span></span></code></pre></td></tr></table></div></div><p>One way to create a separate line for each country is to map the <strong>variable</strong> <code>country</code> to a <strong>mapping aesthetic</strong>. For example, the <strong>variable</strong> <code>country</code> can be <strong>mapped</strong> to the colour <code>aesthetic</code>. Here, we need to include 142 countries in the legend which in turn uses up all the plotting space</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>ggplot(data = gapminder, 
+</span></span><span class=line><span class=cl>       aes(x = year, y = lifeExp, 
+</span></span><span class=line><span class=cl>           colour = country)) + 
+</span></span><span class=line><span class=cl>geom_line()
+</span></span></code></pre></td></tr></table></div></div><p>The theme <strong>layer</strong> can be used to remove the legend of the plot. Once the legend is removed, we end up with a line for each country in the gapminder data set</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>ggplot(data = gapminder, 
+</span></span><span class=line><span class=cl>       aes(x = year, y = lifeExp, 
+</span></span><span class=line><span class=cl>           colour = country)) + 
+</span></span><span class=line><span class=cl>geom_line() +
+</span></span><span class=line><span class=cl>  theme(legend.position = &#34;none&#34;)
+</span></span></code></pre></td></tr></table></div></div><p>Many <strong>geoms layers</strong>, like <code>geom_line()</code>, use a single geometric object to display multiple rows of data. For these <code>geoms</code>, you can set the <strong>group aesthetic</strong> to draw multiple objects without adding a legend or distinguishing feature to the plot</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>ggplot(data = gapminder, 
+</span></span><span class=line><span class=cl>       aes(x = year, y = lifeExp, 
+</span></span><span class=line><span class=cl>           group = country)) + 
+</span></span><span class=line><span class=cl>  geom_line() 
+</span></span></code></pre></td></tr></table></div></div><a href=#facets><h3 id=facets><span class=hanchor arialabel=Anchor># </span>Facets</h3></a><p>To highlight the regional difference between life expectancy trends, the <strong>variable</strong> continent can be <strong>mapped</strong> to the colour <strong>aesthetic</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>ggplot(data = gapminder, 
+</span></span><span class=line><span class=cl>       aes(x = year, y = lifeExp, 
+</span></span><span class=line><span class=cl>           group = country,  
+</span></span><span class=line><span class=cl>           colour = continent)) +
+</span></span><span class=line><span class=cl>  geom_line() 
+</span></span></code></pre></td></tr></table></div></div><p>A <strong>facet</strong> can be used to split a plot into subplots where each subplot displays a subset of the data. To <strong>facet</strong> a plot add the <strong>layer</strong> <code>facet_wrap()</code></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>ggplot(data = gapminder, 
+</span></span><span class=line><span class=cl>       aes(x = year, y = lifeExp, 
+</span></span><span class=line><span class=cl>           group = country, 
+</span></span><span class=line><span class=cl>           colour = continent)) + 
+</span></span><span class=line><span class=cl>  geom_line() + 
+</span></span><span class=line><span class=cl>  facet_wrap(c(&#34;continent&#34;))
+</span></span></code></pre></td></tr></table></div></div><p>Our previous plot had various text that overlapped. To remove any text that overlap, the legend can be removed and the text size reduced</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>ggplot(data = gapminder, aes(x = year, y = lifeExp,  group = country, 
+</span></span><span class=line><span class=cl>                             colour = continent)) + 
+</span></span><span class=line><span class=cl>  geom_line() + 
+</span></span><span class=line><span class=cl>  facet_wrap(c(&#34;continent&#34;)) + 
+</span></span><span class=line><span class=cl>  theme(legend.position = &#34;none&#34;, 
+</span></span><span class=line><span class=cl>        text = element_text(size = 8))
+</span></span></code></pre></td></tr></table></div></div><a href=#modifying-position><h3 id=modifying-position><span class=hanchor arialabel=Anchor># </span>Modifying position</h3></a><p>Suppose we are interested in understanding the distribution of life expectancy over years. We could create a scatterplot, but due to multiple points overlapping, the scatterplot is difficult to interpret. All <strong>layers</strong> include a position adjustment <strong>argument</strong> that can be used to resolve overlapping data. The default position can be changed using the position <strong>argument</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>ggplot(data = gapminder, 
+</span></span><span class=line><span class=cl>       aes(x = year, y = lifeExp)) +
+</span></span><span class=line><span class=cl>  geom_point()
+</span></span></code></pre></td></tr></table></div></div><p>To avoid overlapping data points a small amount of noise can be added to the y-coordinate of each data point. To add a small amount of y noise to each data point, the <strong>argument</strong> <code>position</code> can be set to <code>jitter</code></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>ggplot(data = gapminder, 
+</span></span><span class=line><span class=cl>       aes(x = year, y = lifeExp)) + 
+</span></span><span class=line><span class=cl>  geom_point(position = &#34;jitter&#34;, 
+</span></span><span class=line><span class=cl>             aes(colour = as.character(year))) + 
+</span></span><span class=line><span class=cl>  scale_x_continuous(breaks = 
+</span></span><span class=line><span class=cl>                       seq(1952, 2007, by = 5)) + 
+</span></span><span class=line><span class=cl>  labs(colour = &#34;year&#34;)
+</span></span></code></pre></td></tr></table></div></div><a href=#statistical-transformations><h2 id=statistical-transformations><span class=hanchor arialabel=Anchor># </span>Statistical transformations</h2></a><p>Imagine we wanted to develop a <strong>function</strong> that produces a bar chart from data. When we design the <strong>function</strong> we will have to decide:</p><ol><li>if the user simply passes the raw data and we calculate the count per category or</li><li>If the user passes the count per category</li></ol><p><a class="internal-link broken">Decision.png</a></p><p>When a <code>geom_bar()</code> <strong>layer</strong> is added to a ggplot graphic <strong>object</strong>, ggplot2 computes the count per category from the raw data</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>student_data &lt;- data.frame(student_number = 1:6, 
+</span></span><span class=line><span class=cl>                           degree = c(rep(&#34;Engineering&#34;, 2), 
+</span></span><span class=line><span class=cl>                                      rep(&#34;Computer Science&#34;, 3),
+</span></span><span class=line><span class=cl>                                      &#34;Accounting&#34;)) 
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>ggplot(data = student_data, 
+</span></span><span class=line><span class=cl>       aes(x = degree)) + 
+</span></span><span class=line><span class=cl>  geom_bar()
+</span></span></code></pre></td></tr></table></div></div><p>The algorithm that <code>ggplot</code> uses to calculate statics from raw data is called a <code>stat</code>, short for statistical transformation. The figure below illustrates how the process works for the <code>geom_bar</code> <strong>layer</strong>:</p><p><a class="internal-link broken">geom_bar.png</a></p><ul><li>To determine which <strong>stat</strong> is applied by a geom <strong>layer</strong> the help file of the <strong>geom</strong> can be viewed i.e. <code>?geom_bar</code></li><li>The default <strong>stat</strong> used for the <code>geom_bar</code> <strong>layer</strong> is <code>count</code>, which means that <code>geom_bar()</code> uses <code>stat_count()</code></li><li>You can generally use <strong>geom</strong> and <strong>stats</strong> interchangeably i.e. a bar plot can be created with <code>geom_bar()</code> or <code>stat_count()</code></li></ul><p>The default <strong>argument</strong> passed to the stat <strong>argument</strong> of a <strong>geom layer</strong> can be changed. For example, the <strong>stat</strong> can be changed from <code>count</code> to <code>identity</code>. When using the stat <code>identity</code> the height of the bars is plotted to the raw values of the <strong>variable mapped</strong> to the y <strong>aesthetic</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>data_count &lt;- data.frame(degree = c(&#34;Engineering&#34;, &#34;Accounting&#34;, &#34;Computer Science&#34;), 
+</span></span><span class=line><span class=cl>                         count = c(2, 3, 1)) 
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>ggplot(data = data_count , 
+</span></span><span class=line><span class=cl>       aes(x = degree, y = count)) + 
+</span></span><span class=line><span class=cl>  geom_bar(stat = &#34;identity&#34;)
+</span></span></code></pre></td></tr></table></div></div></article><hr><div class=page-end id=footer><div class=backlinks-container><h3>Backlinks</h3><ul class=backlinks><li><a href=/quartz/Week-2/ data-ctx="R Week 2" data-src=/Week-2 class=internal-link>Week 2</a></li></ul></div><div><script src=https://cdn.jsdelivr.net/npm/d3@6.7.0/dist/d3.min.js integrity="sha256-+7jaYCp29O1JusNWHaYtgUn6EhuP0VaFuswhNV06MyI=" crossorigin=anonymous></script><h3>Interactive Graph</h3><div id=graph-container></div><style>:root{--g-node:var(--secondary);--g-node-active:var(--primary);--g-node-inactive:var(--visited);--g-link:var(--outlinegray);--g-link-active:#5a7282}</style><script src=https://sarathecrewe.github.io/quartz/js/graph.6579af7b10c818dbd2ca038702db0224.js></script></div></div><div id=contact_buttons><footer><p>Made by Nickipedia using <a href=https://github.com/jackyzha0/quartz>Quartz</a>, © 2023</p><ul><li><a href=https://sarathecrewe.github.io/quartz/>Home</a></li></ul></footer></div></div></body></html>
